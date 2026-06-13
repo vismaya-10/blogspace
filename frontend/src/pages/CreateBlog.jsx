@@ -16,7 +16,7 @@ export default function CreateBlog() {
   const handleSubmit = async () => {
     if (!form.title || !form.content) return alert('Please fill all fields!');
     try {
-      await axios.post('http://localhost:5000/api/blogs', form, {
+      await axios.post('https://blogspace-backend-nnz8.onrender.com', form, {
         headers: { Authorization: `Bearer ${token}` }
       });
       navigate('/');
