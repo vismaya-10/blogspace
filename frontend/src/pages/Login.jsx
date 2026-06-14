@@ -13,7 +13,7 @@ export default function Login() {
 
   const handleSubmit = async () => {
     try {
-      const res = await axios.post('https://blogspace-backend-nnz8.onrender.com/api/auth/register', form);
+      const res = await axios.post('https://blogspace-backend-nnz8.onrender.com/api/auth/login', form);
       login(res.data.user, res.data.token);
       navigate('/');
     } catch (err) {
