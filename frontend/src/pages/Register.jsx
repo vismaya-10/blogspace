@@ -11,7 +11,7 @@ export default function Register() {
 
   const handleSubmit = async () => {
     try {
-      await axios.post('http://localhost:5000/api/auth/register', form);
+      await axios.post('https://blogspace-backend-nnz8.onrender.com', form);
       alert('Registered! Please login.');
       navigate('/login');
     } catch (err) {
