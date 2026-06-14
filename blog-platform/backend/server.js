@@ -10,7 +10,7 @@ const commentRoutes = require('./routes/comments');
 const app = express();
 
 app.use(cors({
-  origin: 'http://localhost:5173',
+  origin: 'https://blogspace.vercel.app',
   credentials: true
 }));
 app.use(express.json());
