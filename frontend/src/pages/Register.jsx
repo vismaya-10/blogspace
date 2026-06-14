@@ -10,14 +10,14 @@ export default function Register() {
   const dark = darkMode;
 
   const handleSubmit = async () => {
-    try {
-      axios.post('https://blogspace-backend-nnz8.onrender.com/api/auth/register', form);
-      alert('Registered! Please login.');
-      navigate('/login');
-    } catch (err) {
-      alert(err.response?.data?.message || 'Error');
-    }
-  };
+  try {
+    await axios.post('https://blogspace-backend-nnz8.onrender.com/api/auth/register', form);
+    alert('Registered! Please login.');
+    navigate('/login');
+  } catch (err) {
+    alert(err.response?.data?.message || 'Error');
+  }
+};
 
   return (
     <div style={s.wrapper}>  {/* ← background removed */}

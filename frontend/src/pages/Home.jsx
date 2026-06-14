@@ -14,9 +14,9 @@ export default function Home() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    axios.get('https://blogspace-backend-nnz8.onrender.com').then(res => setBlogs(res.data));
-    axios.get('https://blogspace-backend-nnz8.onrender.com').then(res => setUserCount(res.data.count));
-  }, []);
+  axios.get('https://blogspace-backend-nnz8.onrender.com/api/blogs').then(res => setBlogs(res.data));
+  axios.get('https://blogspace-backend-nnz8.onrender.com/api/auth/count').then(res => setUserCount(res.data.count));
+}, []);
 
   const categories = ['All', 'Technology', 'Travel', 'Food', 'Lifestyle', 'Education'];
 
@@ -120,10 +120,12 @@ export default function Home() {
                 <div style={s.actionBtns}>
                   <button onClick={() => navigate(`/edit/${blog._id}`)} style={s.editBtn}>✏️ Edit</button>
                   <button onClick={() => {
-                    if (window.confirm('Delete this blog?'))
-                      axios.delete(`https://blogspace-backend-nnz8.onrender.com${blog._id}`, { headers: { Authorization: `Bearer ${token}` } })
-                        .then(() => setBlogs(blogs.filter(b => b._id !== blog._id)));
-                  }} style={s.deleteBtn}>🗑️</button>
+  if (window.confirm('Delete this blog?'))
+    axios.delete(`https://blogspace-backend-nnz8.onrender.com/api/blogs/${blog._id}`, { 
+      headers: { Authorization: `Bearer ${token}` } 
+    })
+    .then(() => setBlogs(blogs.filter(b => b._id !== blog._id)));
+}} style={s.deleteBtn}>🗑️</button>
                 </div>
               )}
             </div>
