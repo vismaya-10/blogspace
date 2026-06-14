@@ -13,14 +13,14 @@ export default function EditBlog() {
   const dark = darkMode;
 
   useEffect(() => {
-    axios.get(`https://blogspace-backend-nnz8.onrender.com${id}`).then(res => {
+    axios.get(`https://blogspace-backend-nnz8.onrender.com/${id}`).then(res => {
       setForm({ title: res.data.title, content: res.data.content });
     });
   }, [id]);
 
   const handleSubmit = async () => {
     try {
-      await axios.put(`https://blogspace-backend-nnz8.onrender.com${id}`, form, {
+      await axios.put(`https://blogspace-backend-nnz8.onrender.com/${id}`, form, {
         headers: { Authorization: `Bearer ${token}` }
       });
       navigate('/');

@@ -17,8 +17,8 @@ export default function Blog() {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    axios.get(`https://blogspace-backend-nnz8.onrender.com${id}`).then(r => setBlog(r.data));
-    axios.get(`https://blogspace-backend-nnz8.onrender.com${id}`).then(r => setComments(r.data));
+    axios.get(`https://blogspace-backend-nnz8.onrender.com/${id}`).then(r => setBlog(r.data));
+    axios.get(`https://blogspace-backend-nnz8.onrender.com/${id}`).then(r => setComments(r.data));
   }, [id]);
 
   const handleAddComment = async () => {
@@ -26,7 +26,7 @@ export default function Blog() {
     setLoading(true);
     try {
       const res = await axios.post(
-        `https://blogspace-backend-nnz8.onrender.com${id}`,
+        `https://blogspace-backend-nnz8.onrender.com/${id}`,
         { content: newComment },
         { headers: { Authorization: `Bearer ${token}` } }
       );
@@ -41,7 +41,7 @@ export default function Blog() {
   const handleDeleteComment = async (commentId) => {
     if (!window.confirm('Delete this comment?')) return;
     try {
-      await axios.delete(`https://blogspace-backend-nnz8.onrender.com${commentId}`, {
+      await axios.delete(`https://blogspace-backend-nnz8.onrender.com/${commentId}`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       setComments(comments.filter(c => c._id !== commentId));
